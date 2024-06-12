@@ -4,6 +4,7 @@ import { appRoutes } from '@gateway/routes';
 import { axiosAuthInstance } from '@gateway/services/api/auth.service';
 import { axiosBuyerInstance } from '@gateway/services/api/buyer.service';
 import { axiosGigInstance } from '@gateway/services/api/gig.service';
+import { axiosMessageInstance } from '@gateway/services/api/message.service';
 import { axiosSellerInstance } from '@gateway/services/api/seller.service';
 import { SocketIOAppHandler } from '@gateway/sockets/socket';
 import { createAdapter } from '@socket.io/redis-adapter';
@@ -70,6 +71,7 @@ export class GatewayServer {
         axiosBuyerInstance.defaults.headers['Authorization'] = `Bearer ${req.session?.jwt}`;
         axiosSellerInstance.defaults.headers['Authorization'] = `Bearer ${req.session?.jwt}`;
         axiosGigInstance.defaults.headers['Authorization'] = `Bearer ${req.session?.jwt}`;
+        axiosMessageInstance.defaults.headers['Authorization'] = `Bearer ${req.session?.jwt}`;
       }
 
       next();
